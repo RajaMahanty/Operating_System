@@ -1,42 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 int i,n;
+
+void print_gantt_chart(int p[n],int ct[n])
+{
+	printf("\n\tGantt's Chart\n\n\t|");
+	for(i=0;i<n;i++)
+	{
+		printf(" P%d |",p[i]);
+	}
+	printf("\n\t0");
+	for(i=0;i<n;i++)
+	{
+		printf("    %d",ct[i]);
+	}
+	printf("\n\n");
+}
+
 void print_table(int p[n],int at[n],int bt[n],int ct[n],int tat[n],int wt[n])
 {
-	printf("\nProcesses: \t ");
+	printf("\nProcesses: \t\t ");
 	for(i=0;i<n;i++)
 	{
 		printf("  P%d",p[i]);
 	}
 	printf("\n\n");
-	printf("Arrival Time: \t ");
+	printf("Arrival Time: \t\t ");
 	for(i=0;i<n;i++)
 	{
-		printf("  %d",at[i]);
+		printf("   %d",at[i]);
 	}
 	printf("\n\n");
-	printf("Burst Time: \t ");
+	printf("Burst Time: \t\t ");
 	for(i=0;i<n;i++)
 	{
-		printf("  %d",bt[i]);
+		printf("   %d",bt[i]);
 	}
 	printf("\n\n");
-	printf("Completion Time: ");
+	printf("Completion Time:      \t");
 	for(i=0;i<n;i++)
 	{
-		printf("  %d",ct[i]);
+		printf("   %d",ct[i]);
 	}
 	printf("\n\n");
-	printf("Turn Around Time:");
+	printf("Turn Around Time:\t ");
 	for(i=0;i<n;i++)
 	{
-		printf("  %d",tat[i]);
+		printf("   %d",tat[i]);
 	}
 	printf("\n\n");
-	printf("Waiting Time: \t ");
+	printf("Waiting Time: \t\t ");
 	for(i=0;i<n;i++)
 	{
-		printf("  %d",bt[i]);
+		printf("   %d",bt[i]);
 	}
 	printf("\n\nEnter any key to exit...");
 	getch();
@@ -177,6 +193,7 @@ int main()
 	calculating_tat(at,ct,tat);
 	calculating_wt(tat,bt,wt);
 	rearranging_table_again(p,at,bt,ct,tat,wt);
+	print_gantt_chart(p,ct);
 	print_table(p,at,bt,ct,tat,wt);
 	return 0;
 }
